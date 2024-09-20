@@ -61,12 +61,16 @@ try:
 except:
     fail.append("failed to update firefox")
 
-# enable SSH
+# SSH
 try:
     sshEnable = input("Does ssh need enabled? y/n: ")
     if (sshEnable == "y" or sshEnable == "Y"):
         run(["sudo", "systemctl", "enable", "ssh"])
         run(["sudo", "systemctl", "start", "ssh"])
+    sshEnable = input("Does ssh need disabled? y/n: "):
+    if (sshEnable == "y" or sshEnable == "Y"):
+        run(["sudo", "systemctl", "stop", "ssh"])
+        run(["sudo", "systemctl", "disable", "ssh"])
 except:
     fail.append("couldn't enable ssh")
 
