@@ -47,4 +47,4 @@ gpupdate /force
 Disable-localuser Guest
 Disable-localuser Administrator
 
-start-mpscan -scantype quickscan 
+start-mpscan -scantype fullscan 
