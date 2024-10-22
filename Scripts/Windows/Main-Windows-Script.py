@@ -390,22 +390,22 @@ except Exception as e:
 
 #check for windows update
 try:
-        print("Checking for updates...")
-        subprocess.run(["usoclient", "StartScan"], check=True)
-        print("Update check initiated.")
+    print("Checking for updates...")
+    subprocess.run(["usoclient", "StartScan"], check=True)
+    print("Update check initiated.")
 except subprocess.CalledProcessError as e:
-        print(f"Failed to check for updates: {e}")
+    print(f"Failed to check for updates: {e}")
 
- try:
-        print("Installing updates...")
-        subprocess.run(["usoclient", "StartInstall"], check=True)
-        print("Update installation initiated.")
+try:
+    print("Installing updates...")
+    subprocess.run(["usoclient", "StartInstall"], check=True)
+    print("Update installation initiated.")
 except subprocess.CalledProcessError as e:
-        print(f"Failed to install updates: {e}")
+    print(f"Failed to install updates: {e}")
 
 """
 things to add:
     account managment
-    file manangment is a mayber based on if I want to risk deleting cyber patriot files
-    
+    file manangment is a maybe based on if I want to risk deleting cyber patriot files
+    malware removal
 """
