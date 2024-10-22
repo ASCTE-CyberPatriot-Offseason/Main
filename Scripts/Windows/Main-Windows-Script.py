@@ -6,8 +6,6 @@ order of the task is not yet determined.(possibly no order)
 
 
 import subprocess
-import os
-import fnmatch
 
 #enable firewall
 subprocess.run(["powershell", "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True"])
