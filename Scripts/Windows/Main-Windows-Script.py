@@ -171,23 +171,6 @@ for command in commands:
     subprocess.run(["powershell", "-Command", command], check=True)
     
 
-try:
-    # Command to run a quick scan using Windows Defender
-    command = ["powershell", "Start-MpScan", "-ScanType", "QuickScan"]
-        
-    # Execute the command
-    result = subprocess.run(command, capture_output=True, text=True)
-        
-    # Check if the command was successful
-    if result.returncode == 0:
-        print("Quick scan completed successfully.")
-        print(result.stdout)
-    else:
-        print("Quick scan failed.")
-        print(result.stderr)
-except Exception as e:
-    print(f"An error occurred: {e}")
-
 # List of commands to stop and disable services might be overlap was coppied and pasted from previous code
 stop_disable_commands = [
     'sc stop tlntsvr',
@@ -386,3 +369,43 @@ start_enable_commands = [
 for command in start_enable_commands:
     subprocess.run(['cmd.exe', '/c', command], check=True)
     
+    
+    
+try:
+    # Command to run a quick scan using Windows Defender
+    command = ["powershell", "Start-MpScan", "-ScanType", "QuickScan"]
+        
+    # Execute the command
+    result = subprocess.run(command, capture_output=True, text=True)
+        
+    # Check if the command was successful
+    if result.returncode == 0:
+        print("Quick scan completed successfully.")
+        print(result.stdout)
+    else:
+        print("Quick scan failed.")
+        print(result.stderr)
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+#check for windows update
+try:
+        print("Checking for updates...")
+        subprocess.run(["usoclient", "StartScan"], check=True)
+        print("Update check initiated.")
+except subprocess.CalledProcessError as e:
+        print(f"Failed to check for updates: {e}")
+
+ try:
+        print("Installing updates...")
+        subprocess.run(["usoclient", "StartInstall"], check=True)
+        print("Update installation initiated.")
+except subprocess.CalledProcessError as e:
+        print(f"Failed to install updates: {e}")
+
+"""
+things to add:
+    account managment
+    file manangment is a mayber based on if I want to risk deleting cyber patriot files
+    
+"""
