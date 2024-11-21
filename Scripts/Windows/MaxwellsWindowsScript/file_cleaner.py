@@ -6,10 +6,11 @@ fileTypes = [".jpg", ".png", ".aac", ".ac3", ".avi", ".aiff", ".bat", ".bmp", ".
              ".pdf", ".json"]
 
 # Directory path to exclude (e.g., "Cyber Patriot Personnel")
-exclude_directory = "C://Program Files/Cyber Patriot Personnel"
+user = os.getlogin()
+exclude_directory = ["C://Program Files/Cyber Patriot Personnel", "C://Users//"+user+"//Desktop"]
 
 # Directories to search through
-userDirectories = ["C://Program Files", "C://Users"]
+userDirectories = ["C://Users"]
 
 for root_dir in userDirectories:
     for root, dirs, files in os.walk(root_dir):
