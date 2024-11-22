@@ -1,5 +1,4 @@
 import os
-#test
 
 # File types to delete
 fileTypes = [".jpg", ".png", ".aac", ".ac3", ".avi", ".aiff", ".bat", ".bmp", ".exe", ".flac", ".gif", ".jpeg", ".mov", ".m3u", ".m4p",
