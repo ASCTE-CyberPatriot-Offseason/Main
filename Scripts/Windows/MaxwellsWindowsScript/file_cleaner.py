@@ -1,4 +1,5 @@
 import os
+import shutil
 
 # File types to delete
 fileTypes = [".jpg", ".png", ".aac", ".ac3", ".avi", ".aiff", ".bat", ".bmp", ".exe", ".flac", ".gif", ".jpeg", ".mov", ".m3u", ".m4p",
@@ -11,6 +12,10 @@ exclude_directory = ["C://Program Files/Cyber Patriot Personnel", "C://Users//"+
 
 # Directories to search through
 userDirectories = ["C://Users"]
+safe_folder = "C://Users//"+user+"Desktop//DELETEME"
+
+#mkdir on desktop for files
+os.mkdir("C://Users//{user}/Desktop//DELETEME")
 
 for root_dir in userDirectories:
     for root, dirs, files in os.walk(root_dir):
@@ -23,7 +28,7 @@ for root_dir in userDirectories:
             if any(file.endswith(ft) for ft in fileTypes):
                 try:
                     file_path = os.path.join(root, file)
-                    os.remove(file_path)
+                    shutil.move(file_path, safe_folder)
                     print(f"Deleted: {file_path}")
                 except Exception as e:
                     print(f"Failed to delete {file_path}: {e}")
