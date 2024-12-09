@@ -1,26 +1,19 @@
 import subprocess
+import os
+import shutil
 
-def uninstall_malicious_software():
-    software_list = ["Wireshark", "Netcap", "CCleaner"]
-    powershell_script = """
-    $softwareList = @{software_list}
-    $installedSoftware = Get-WmiObject -Class Win32_Product
-    foreach ($software in $softwareList) {{
-        $app = $installedSoftware | Where-Object {{ $_.Name -like "*$software*" }}
-        if ($app) {{
-            try {{
-                $app.Uninstall()
-                Write-Output "Uninstalled: $($app.Name)"
-            }} catch {{
-                Write-Output "Error uninstalling $($app.Name): $_"
-            }}
-        }} else {{
-            Write-Output "$software is not installed."
-        }}
-    }}
-    """.format(software_list=", ".join([f'"{software}"' for software in software_list]))
-    subprocess.run(["powershell", "-Command", powershell_script], check=True)
-    print("Malicious software uninstallation attempted.")
+def deleteDirectories(listA, listB):
+    malwareList = ["Wireshark", "Npcap"]
+    for dir in listA:
+        if dir in malwareList:
+            print(dir)
+            shutil.rmtree(f"C:/Program Files/{dir}")
+    for dir in listB:
+        if dir in malwareList:
+            shutil.rmtree(f"C:/Program Files (x86)/{dir}")
 
 if __name__ == "__main__":
-    uninstall_malicious_software()
+    softwareListPF = os.listdir("C:/Program Files")
+    softwareList86 = os.listdir("C:/Program Files (x86)")
+    print(f"Collected Software: {softwareListPF} {softwareList86}")
+    deleteDirectories(softwareListPF, softwareList86)
