@@ -29,7 +29,7 @@ service_manaement.manage_services()
 print("running software management")
 input("press enter to begin... ")
 import software_management
-software_management.uninstall_malicious_software()
+software_management.deleteDirectories()
 
 print("changing uac settings")
 input("press enter to begin... ")
