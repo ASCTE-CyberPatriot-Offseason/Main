@@ -12,8 +12,7 @@ def deleteDirectories(listA, listB):
         if dir in malwareList:
             shutil.rmtree(f"C:/Program Files (x86)/{dir}")
 
-if __name__ == "__main__":
-    softwareListPF = os.listdir("C:/Program Files")
-    softwareList86 = os.listdir("C:/Program Files (x86)")
-    print(f"Collected Software: {softwareListPF} {softwareList86}")
-    deleteDirectories(softwareListPF, softwareList86)
+softwareListPF = os.listdir("C:/Program Files")
+softwareList86 = os.listdir("C:/Program Files (x86)")
+print(f"Collected Software: {softwareListPF} {softwareList86}")
+deleteDirectories(softwareListPF, softwareList86)
