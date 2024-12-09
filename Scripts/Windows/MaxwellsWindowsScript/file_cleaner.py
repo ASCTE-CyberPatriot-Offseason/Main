@@ -20,15 +20,17 @@ os.mkdir(f"C://Users//{user}/Desktop//DELETEME")
 for root_dir in userDirectories:
     for root, dirs, files in os.walk(root_dir):
         # Skip the exclude directory
-        if exclude_directory in root:
-            continue
-
-        # Delete files of specified types
-        for file in files:
-            if any(file.endswith(ft) for ft in fileTypes):
-                try:
+        skip = False
+        for thing in exclude_directory:
+            if thing in root:
+                skip = True
+        if not skip:
+            # Delete files of specified types
+            for file in files:
+                if any(file.endswith(ft) for ft in fileTypes):
                     file_path = os.path.join(root, file)
-                    shutil.move(file_path, safe_folder)
-                    print(f"Deleted: {file_path}")
-                except Exception as e:
-                    print(f"Failed to delete {file_path}: {e}")
+                    try:
+                        shutil.move(file_path, safe_folder)
+                        print(f"Deleted: {file_path}")
+                    except Exception as e:
+                        print(f"Failed to delete {file_path}: {e}")
