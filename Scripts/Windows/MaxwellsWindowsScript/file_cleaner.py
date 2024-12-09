@@ -15,7 +15,7 @@ userDirectories = ["C://Users"]
 safe_folder = "C://Users//"+user+"Desktop//DELETEME"
 
 #mkdir on desktop for files
-os.mkdir("C://Users//{user}/Desktop//DELETEME")
+os.mkdir(f"C://Users//{user}/Desktop//DELETEME")
 
 for root_dir in userDirectories:
     for root, dirs, files in os.walk(root_dir):
