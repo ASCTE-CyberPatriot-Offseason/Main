@@ -21,12 +21,12 @@ def check_install_updates():
     try:
         print("Checking for updates...")
         # Initiate an update check using the 'usoclient' command
-        subprocess.run(["usoclient", "StartScan"], check=True)
+        subprocess.run(["wuauclt", "/detectnow"])
         print("Update check initiated.")
 
         print("Installing updates...")
         # Initiate update installation using 'usoclient' command
-        subprocess.run(["usoclient", "StartInstall"], check=True)
+        subprocess.run(["wuauclt", "/updatenow"])
         print("Update installation initiated.")
     except subprocess.CalledProcessError as e:
         # Handle any errors during update check or installation
