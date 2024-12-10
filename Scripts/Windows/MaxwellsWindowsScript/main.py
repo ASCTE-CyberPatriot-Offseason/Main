@@ -1,4 +1,15 @@
-import defender_updates, firewall_config, audit_policies, password_policies, service_manaement, uac_settings
+import defender_updates, firewall_config, audit_policies, password_policies, service_manaement, uac_settings, ctypes
+
+def is_admin():
+    try:
+        admin = ctypes.windll.shell32.IsUserAnAdmin()
+        if not admin:
+            print("No no! Run me as admin, its better that way")
+    except:
+        return False
+
+is_admin()
+
 print("\033[0m\033[31m")
 print("Begin computer fixing ;)")
 
