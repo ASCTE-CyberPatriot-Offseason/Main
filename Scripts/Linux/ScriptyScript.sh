@@ -152,6 +152,7 @@ sudo systemctl stop httpd
 sudo systemctl stop apache2
 sudo systemctl stop nginx 
 sudo systemctl disable nginx
+sudo systemctl purge apache2
 echo "Stopped httpd, apache2, nginx" >> $LOG_FILE
 
 #Disabling root login
